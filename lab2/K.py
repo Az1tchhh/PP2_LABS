@@ -3,7 +3,7 @@ new_string = string.split()
 set_of_new_string = {''}
 new_new_string = []
 for i in range(len(new_string)):
-    x = new_string[i].rstrip(",.?!:\|/()*&^%$#@+_=-}{[];7894561230")
+    x = new_string[i].rstrip(",.?!")
     set_of_new_string.add(x)
 
 for i in set_of_new_string:
