@@ -34,3 +34,4 @@ for i in dict_of_demons.keys():
         count+=amount
     amount = 0
 print("Demons left: {}".format(count))
+#sdfs

@@ -13,3 +13,4 @@ print(len(new_new_string)-1)
 for i in range(len(new_new_string)):
     if i>0:
         print(new_new_string[i])
+        #sdfs

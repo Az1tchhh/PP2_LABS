@@ -14,3 +14,4 @@ if(can_reach_last_index(a)==True):
     print(1)
 else:
     print(0)
+#sdfs

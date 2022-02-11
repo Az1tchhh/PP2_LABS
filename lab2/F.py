@@ -21,3 +21,4 @@ for i in c:
         print(str(i)+" is lucky!")
     else:   
         print(str(i)+" has to receive", maxi-int(a[i]), "tenge")
+        #sdfs

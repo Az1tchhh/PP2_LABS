@@ -24,3 +24,4 @@ else:
         sum=0
 x =" ".join(list2)
 print(x)
+#sdfs

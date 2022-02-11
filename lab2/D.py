@@ -11,3 +11,4 @@ else:
             string =""
             string ="."*(size-i-1)+"#"*(i+1)
         print(string)
+        #sdfs

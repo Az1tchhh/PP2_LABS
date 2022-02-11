@@ -23,3 +23,4 @@ else:
         else:
             s=s^myList[i]
     print(s)
+#sdfs

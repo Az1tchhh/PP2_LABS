@@ -12,3 +12,4 @@ list.sort()
 
 for k in range(len(list)):
     print(*list[k][1])
+    #sdfs

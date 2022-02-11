@@ -9,3 +9,4 @@ for i in range(int(input())):
         del discs[0]
     a=""
 print(*taken)
+#sdfs

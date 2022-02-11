@@ -20,3 +20,4 @@ for i in data:
     i[2] = temp 
 for i in data: 
     print(*i)
+    #sdfs
