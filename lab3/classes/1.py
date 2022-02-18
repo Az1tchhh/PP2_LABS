@@ -3,5 +3,5 @@ class Student:
         self.name=name
     def get_string(self):
         return self.name
-s1 = Student('az')
-print(s1.get_string())
+s = Student('az')
+print(s.get_string())
