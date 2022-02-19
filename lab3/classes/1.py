@@ -1,7 +1,7 @@
 class Student:
-    def init(self,name):
-        self.name=name
+    def __init__(self, name):
+        self.name = name
     def get_string(self):
-        return self.name
-s = Student('az')
-print(s.get_string())
+        print (self.name.upper())
+s = Student(input())
+s.get_string()
