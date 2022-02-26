@@ -8,7 +8,17 @@ topology/pod-1/node-201/sys/phys-[eth1/33]                              inherit 
 topology/pod-1/node-201/sys/phys-[eth1/34]                              inherit   9150 
 topology/pod-1/node-201/sys/phys-[eth1/35]                              inherit   9150 
 '''
-f = open("sample-data.json")
-data = json.load(f)
-for i in data['imdata']:
-    print(i)
+with open("sample-data.json", "r") as f:
+    a = f.read()
+data = json.loads(a)
+a = b = c = d = ""
+print("""Interface Status
+================================================================================
+DN                                                 Description           Speed    MTU  
+-------------------------------------------------- --------------------  ------  ------""")
+for i in range(len(data["imdata"])):
+    a = data["imdata"][i]["l1PhysIf"]["attributes"]["dn"]
+    b = data["imdata"][i]["l1PhysIf"]["attributes"]["descr"]
+    c = data["imdata"][i]["l1PhysIf"]["attributes"]["speed"]
+    d = data["imdata"][i]["l1PhysIf"]["attributes"]["mtu"]
+    print("{:<49}".format(a),"{:<21}".format(b), "{:<6}".format(c), " ", d )
