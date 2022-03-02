@@ -1,4 +1,3 @@
-
 N = int(input())
 def numbers():
     i=1

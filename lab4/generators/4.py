@@ -1,6 +1,6 @@
-N = int(input())
+start,N = map(int , input().split())
 def squares():
-    i=1
+    i=start
 
     while(i*i<=N):
         yield i*i 

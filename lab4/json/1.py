@@ -21,4 +21,4 @@ for i in range(len(data["imdata"])):
     b = data["imdata"][i]["l1PhysIf"]["attributes"]["descr"]
     c = data["imdata"][i]["l1PhysIf"]["attributes"]["speed"]
     d = data["imdata"][i]["l1PhysIf"]["attributes"]["mtu"]
-    print("{:<49}".format(a),"{:<21}".format(b), "{:<6}".format(c), " ", d )
+    print("{:<49}{:<23}{:<7}  ".format(a,b,c), d )
