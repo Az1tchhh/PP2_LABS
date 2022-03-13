@@ -2,8 +2,9 @@ import re
 
 
 list =input()
-find = re.findall("ab*", list)
-print(find)
+
+find = re.findall("[A-Z][^A-Z]*", list)
+print(" ".join(find))
 if find:
     print("YES")
 else:
