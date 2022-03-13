@@ -1,8 +1,7 @@
 import re
 
 
-list =input()
 
-find = re.findall("[A-Z][^A-Z]*", list)
+find = re.findall("[A-Z][^A-Z]*", input())
 print(" ".join(find))
    

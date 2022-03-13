@@ -8,4 +8,4 @@ print(" ".join(find))
 if find:
     print("YES")
 else:
-    print("NO")    
+    print("NO")    #asd
