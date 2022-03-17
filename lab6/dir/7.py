@@ -2,7 +2,7 @@ import os
 first = input("First file main path: ")
 first2 = input("First file sub path: ")
 second = input("Second file main path: ")
-second2 = input("Second file main path: ")
+second2 = input("Second file sub path: ")
 w_d = os.getcwd()
 
 #paths
