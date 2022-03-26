@@ -4,7 +4,7 @@ import Function
 WORKING_DIRECTORY = os.getcwd()
 
 
-
+#gdfklgsdfkl\PP2_LABS\lab4\math
 ##########################################################################
 first_input = input("Folder name: ")
 first_directory = os.path.join(WORKING_DIRECTORY, first_input)
