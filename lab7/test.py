@@ -1,5 +1,2 @@
-import datetime
-a = datetime.datetime.now().minute
-delta = 15
-b = a - delta
-print(b)
+import math
+print(math.cos(math.radians(180)))
