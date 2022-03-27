@@ -20,6 +20,8 @@ img2 = pygame.image.load('shorthandpng.png')
 def get_clock_pos(clock_dict, clock_hand, key):
     x = H_WIDTH + radius_list[key] * math.cos(math.radians(clock_dict[clock_hand]) - math.pi / 2)
     y = H_HEIGHT + radius_list[key] * math.sin(math.radians(clock_dict[clock_hand]) - math.pi / 2)
+    img12 = pygame.transform.rotate(img1 , a)
+    surface.blit(img12, (mx - int(img12.get_width() / 2), my - int(img12.get_height() / 2)))
     return x, y
 
 
@@ -54,10 +56,7 @@ while True:
     
     img12 = pygame.transform.rotate(img1 , a)
     surface.blit(img12, (mx - int(img12.get_width() / 2), my - int(img12.get_height() / 2)))
-    cnt +=1
-    if cnt == 12:
-        img22 = pygame.transform.rotate(img2 , a)
-        surface.blit(img22, (mx - int(img22.get_width() / 2), my - int(img22.get_height() / 2)))
+    
     pygame.draw.line(surface, pygame.Color('orange'), (H_WIDTH, H_HEIGHT), get_clock_pos(clock60, hour, 'hour'), 12)
     pygame.draw.line(surface, pygame.Color('green'), (H_WIDTH, H_HEIGHT), get_clock_pos(clock60, minute, 'min'), 7)
 
