@@ -7,7 +7,6 @@ import time
 res = w, h = 700, 618
 w_half, h_half = w // 2, h // 2
 
-
 pygame.init()
 surface = pygame.display.set_mode(res)
 clock = pygame.time.Clock()
@@ -46,8 +45,8 @@ while True:
     basicFont = pygame.font.SysFont(None, 48)
     text = basicFont.render('B Azamat', True, 'white', 'lightblue')
     textRect = text.get_rect()
-    textRect.centerx = surface.get_rect().centerx
-    textRect.centery = surface.get_rect().centery
+    textRect.topleft = surface.get_rect().topleft
+    textRect.height = surface.get_rect().height
     surface.blit(text, textRect)
 ########################################################################
     pygame.display.flip()
