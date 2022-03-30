@@ -87,27 +87,16 @@ while not finished:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 pygame.draw.circle(surface, red, (130,576), 50, 5)
-                pygame.draw.circle(surface, red, (130,576), 50, 5)
-                pygame.draw.circle(surface, red, (130,576), 50, 5)
-                pygame.draw.circle(surface, red, (130,576), 50, 5)
-                pygame.draw.circle(surface, red, (130,576), 50, 5)
-                pygame.draw.circle(surface, red, (130,576), 50, 5)
+                
                 pygame.draw.circle(surface, black, (w/2-10,576), 50, 5)
                 pygame.draw.circle(surface, black, (450,576), 50, 5)
             elif event.key == pygame.K_RIGHT:
                 pygame.draw.circle(surface, black, (130,576), 50, 5)
                 pygame.draw.circle(surface, black, (w/2-10,576), 50, 5)
                 pygame.draw.circle(surface, red, (450,576), 50, 5)
-                pygame.draw.circle(surface, red, (450,576), 50, 5)
-                pygame.draw.circle(surface, red, (450,576), 50, 5)
-                pygame.draw.circle(surface, red, (450,576), 50, 5)
-                pygame.draw.circle(surface, red, (450,576), 50, 5)
+                
             elif event.key == pygame.K_SPACE:
                 pygame.draw.circle(surface, black, (130,576), 50, 5)
-                pygame.draw.circle(surface, red, (w/2-10,576), 50, 5)
-                pygame.draw.circle(surface, red, (w/2-10,576), 50, 5)
-                pygame.draw.circle(surface, red, (w/2-10,576), 50, 5)
-                pygame.draw.circle(surface, red, (w/2-10,576), 50, 5)
                 pygame.draw.circle(surface, red, (w/2-10,576), 50, 5)
                 pygame.draw.circle(surface, black, (450,576), 50, 5)
     basicFontForText = pygame.font.SysFont(None, 30)

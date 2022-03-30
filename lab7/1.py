@@ -23,14 +23,14 @@ def get_clock_pos_seconds(clock_dict, second):
 def get_clock_pos_minute(clock_dict, minute, key):
     img12 = pygame.transform.rotate(img1 , -(clock_dict[minute]-90))    
     surface.blit(img12, (w_half - int(img12.get_width() / 2), h_half - int(img12.get_height() / 2)))
-
-
+    
 def get_clock_pos_hour(clock_dict, hour, key):
     img12 = pygame.transform.rotate(img2 , -(clock_dict[hour]-270))    
     surface.blit(img12, (w_half - int(img12.get_width() / 2), h_half - int(img12.get_height() / 2)))
 ######crash##########
 while True:
     for event in pygame.event.get():
+        print(event)
         if event.type == pygame.QUIT:
             exit()
 #####################
