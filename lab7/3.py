@@ -48,6 +48,6 @@ while not finished:
     pygame.draw.rect(surface,black, square_res ,5)
 
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(10)
 pygame.quit()
 #######

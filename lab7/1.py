@@ -37,7 +37,7 @@ while True:
     surface.blit(img, (0, 0))
     t = datetime.now()
     hour, minute, second = ((t.hour % 12) * 5 + t.minute // 12) % 60, t.minute, t.second
-    pygame.draw.line(surface, 'black', (w_half, h_half), get_clock_pos_seconds(clock60, second), 7)
+    pygame.draw.line(surface, 'black', (w_half, h_half), get_clock_pos_seconds(clock60, second), 5 )
     get_clock_pos_hour(clock60, hour, 'hour')
     get_clock_pos_minute(clock60, minute, 'min')
 
