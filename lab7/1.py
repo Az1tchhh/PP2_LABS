@@ -26,7 +26,7 @@ def get_clock_pos_minute(clock_dict, minute, key):
     
 def get_clock_pos_hour(clock_dict, hour, key):
     img12 = pygame.transform.rotate(img2 , -(clock_dict[hour]-270))    
-    surface.blit(img12, (w_half - int(img12.get_width() / 2), h_half - int(img12.get_height() / 2)))
+    surface.blit(img12, (w_half - int(img12.get_width() / 2),  h_half - int(img12.get_height() / 2)))
 ######crash##########
 while True:
     for event in pygame.event.get():
@@ -43,7 +43,7 @@ while True:
 
 ###############TEXT##################TEXT##########TEXT###############
     basicFontForText = pygame.font.SysFont(None, 30)
-    text = basicFontForText.render('B Azamat', True, 'grey', 'white')
+    text = basicFontForText.render('B Azamat', True, 'black', 'white')
     surface.blit(text, (0,0))
 ########################################################################
     pygame.display.flip()

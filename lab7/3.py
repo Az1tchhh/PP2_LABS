@@ -46,7 +46,9 @@ while not finished:
                     surface.fill(white)
                     pygame.draw.circle(surface, red, (w/2-cntx,h/2-cnty), radius)    
     pygame.draw.rect(surface,black, square_res ,5)
-
+    basicFontForText = pygame.font.SysFont(None, 30)
+    text = basicFontForText.render('B Azamat', True, 'black', 'white')
+    surface.blit(text, (0,0))
     pygame.display.update()
     clock.tick(10)
 pygame.quit()
