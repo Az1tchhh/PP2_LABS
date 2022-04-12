@@ -10,6 +10,8 @@ def drawRect ( screen, x,y,a,b, color):
 res = w,h = 700,700
 screen = pygame.display.set_mode(res)
 pygame.display.set_caption("Azaza")
+image = pygame.image.load("background.png")
+pygame.display.set_icon(image)
 
 ####
 white = (255,255,255)
