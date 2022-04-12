@@ -69,19 +69,20 @@ while not finished:
         if event.type == pygame.MOUSEMOTION and isPressed == True and drawingrect == drawingcircle == 0:         
             (x, y) = pygame.mouse.get_pos()   # returns the position of mouse cursor
             if color == white:
-                drawRect(screen,x-20,y-20,40,40, color)
+                pygame.draw.rect(screen, color, (x-20,y-20,40,40))
             else:
-                drawCircle( screen, x, y, 10, color )
+                pygame.draw.circle( screen,color, (x, y), 10)
         if isPressed == True and drawingrect == 1:  
             (x, y) = pygame.mouse.get_pos()
-            drawRect(screen,x-25,y-20,50,40, color)
+            pygame.draw.rect(screen, color, (x-25,y-20,50,40))
             drawingrect = 0
         elif isPressed == True and drawingcircle == 1:  
             (x, y) = pygame.mouse.get_pos()
-            drawCircle( screen, x, y, 20, color )
+            pygame.draw.circle( screen,color, (x, y), 20)
             drawingcircle = 0
     pygame.draw.rect(screen, black, (650,1,15,15), 1)
     pygame.draw.rect(screen, color, (650,40,15,15))
+    pygame.draw.rect(screen, black, (648,38,17,17), 2)
     pygame.display.update()
-    clock.tick(240)
+    clock.tick(700)
 pygame.quit()
