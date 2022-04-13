@@ -1,4 +1,4 @@
-from dis import dis
+
 import pygame
 pygame.init()
 ####

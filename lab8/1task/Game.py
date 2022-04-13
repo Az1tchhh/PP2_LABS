@@ -4,7 +4,6 @@ from winreg import EnableReflectionKey
 import pygame, sys
 from pygame.locals import *
 import random, time
-
 #Initialzing 
 pygame.init()
 
