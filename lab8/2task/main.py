@@ -4,9 +4,7 @@ import time
 
 pygame.init()
 ###
-def Your_score(screen, score):
-    value = "Your Score: " + str(score)
-    screen.blit(value, [0, 0])
+
 ###
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -24,23 +22,29 @@ score = 0
 
 snake_pos = [50,50]
 snake_body = [[100,50], [85,50], [70,50]]
-fruit_pos = [random.randrange(1, (w//15)) * 10, random.randrange(1, (h//15)) * 10]
+fruit_pos = [random.randrange(1, (w//10)) * 15, 
+            random.randrange(1, (h//10)) * 15]
 fruit = True
 startingdirection = 'right'
 direction = startingdirection
 finished = False
+fruit_spawn = True
 while not finished:
+    basicFontForText = pygame.font.SysFont(None, 30)
+    score_surface = basicFontForText.render('Score : ' + str(score), True, WHITE)
+    score_rect = score_surface.get_rect()
+    screen.blit(score_surface, score_rect)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
         if event.type == pygame.KEYDOWN:
-            if event.type == pygame.K_RIGHT:
+            if event.key == pygame.K_RIGHT:
                 direction = 'right'
-            if event.type == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT:
                 direction = 'left'
-            if event.type == pygame.K_UP:
+            if event.key == pygame.K_UP:
                 direction = 'up'
-            if event.type == pygame.K_DOWN:
+            if event.key == pygame.K_DOWN:
                 direction = 'down'
     if direction == 'up' and startingdirection != 'down':
         startingdirection == 'up'
@@ -60,24 +64,23 @@ while not finished:
     if startingdirection == 'down':
         snake_pos[0] -= 15
     
-     snake_body.insert(0, list(snake_pos))
-    if snake_pos[0] == fruit_position[0] and snake_pos[1] == fruit_position[1]:
+    snake_body.insert(0, list(snake_pos))
+    if snake_pos[0] == fruit_pos[0] and snake_pos[1] == fruit_pos[1]:
         score += 1
         fruit_spawn = False
     else:
         snake_body.pop()
          
     if not fruit_spawn:
-        fruit_position = [random.randrange(1, (w//10)) * 10,
-                          random.randrange(1, (h//10)) * 10]
-
+        fruit_pos = [random.randrange(1, (w//10)) * 15,
+                    random.randrange(1, (h//10)) * 15]
+    fruit_spawn = True
+    screen.fill(BLACK)
     for pos in range(len(snake_body)):
-        if pos == 0:
-            pygame.draw.circle(screen, RED, (snake_body[pos][0], snake_body[pos][1]), 7.5)
-        else:
-            pygame.draw.circle(screen, GREEN, (snake_body[pos][0], snake_body[pos][1]), 7.5)
+        pygame.draw.circle(screen, GREEN, (snake_body[pos][0], snake_body[pos][1]), 7.5)
     pygame.draw.circle(screen, WHITE, (fruit_pos[0], fruit_pos[1]), 7.5)
 
+    
     if snake_pos[0] < 0 or snake_pos[0] > w-15:
         time.sleep(3)
         pygame.quit()
@@ -85,6 +88,6 @@ while not finished:
         time.sleep(3)
         pygame.quit()
     
-    pygame.display.flip()
+    pygame.display.update()
     clock.tick(10)
 pygame.quit() 
