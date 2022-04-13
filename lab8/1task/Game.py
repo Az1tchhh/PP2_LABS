@@ -32,117 +32,41 @@ game_over = font.render("Game Over", True, BLACK)
 background = pygame.image.load("road.png")
 background = pygame.transform.rotate(background, -90)
 background = pygame.transform.scale(background, (400,600))
-
+machine = pygame.image.load("Player.png")
 #Create a white screen 
-DISPLAYSURF = pygame.display.set_mode((400,600))
-DISPLAYSURF.fill(WHITE)
+screen = pygame.display.set_mode((400,600))
+
 pygame.display.set_caption("Game")
 
-
-class Enemy(pygame.sprite.Sprite):
-      def __init__(self):
-        super().__init__() 
-        self.image = pygame.image.load("Enemy.png")
-        self.rect = self.image.get_rect()
-        self.rect.center = (random.randint(40,SCREEN_WIDTH-40), 0)
-
-      def move(self):
-        global SCORE
-        self.rect.move_ip(0,SPEED)
-        if (self.rect.bottom > 600):
-            SCORE += 1
-            self.rect.top = 0
-            self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
-
-class Money(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-        image =  pygame.image.load("money.png")
-        image = pygame.transform.scale(image, (70,70))
-        self.image = image
-        self.rect = self.image.get_rect()
-        self.rect.center = (random.randint(40, SCREEN_WIDTH-40), 0)
-    def move(self):
-        global SCORE
-        self.rect.move_ip(0,SPEED)
-        if (self.rect.bottom > 600) :
-            self.rect.top = 0
-            self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
-
-class Player(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__() 
-        self.image = pygame.image.load("Player.png")
-        self.rect = self.image.get_rect()
-        self.rect.center = (160, 520)
-       
-    def move(self):
-        pressed_keys = pygame.key.get_pressed()
-        
-        if self.rect.left > 0:
-              if pressed_keys[K_LEFT]:
-                  self.rect.move_ip(-10, 0)
-        if self.rect.right < SCREEN_WIDTH:        
-              if pressed_keys[K_RIGHT]:
-                  self.rect.move_ip(10, 0)
-        
-
-
-#Setting up Sprites        
-P1 = Player()
-E1 = Enemy()
-M1 = Money()
-#Creating Sprites Groups
-enemies = pygame.sprite.Group()
-enemies.add(E1)
-points = pygame.sprite.Group()
-points.add(M1)
-all_sprites = pygame.sprite.Group()
-all_sprites.add(P1)
-all_sprites.add(E1)
-all_sprites.add(M1)
-#Adding a new User event 
-INC_SPEED = pygame.USEREVENT + 1
-pygame.time.set_timer(INC_SPEED, 1000)
-
+startpoint = [200,500]
+screen.blit(background, (0,0))
+change_to = 'RIGHT'
+cnt=0
 #Game Loop
 while True:
       
     #Cycles through all events occuring  
     for event in pygame.event.get():
-        if event.type == INC_SPEED:
-              SPEED += 0.5      
-        if event.type == QUIT:
+        if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-
-
-    DISPLAYSURF.blit(background, (0,0))
-    scores = font_small.render(str(SCORE), True, BLACK)
-    DISPLAYSURF.blit(scores, (10,10))
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                change_to = 'LEFT'
+            if event.key == pygame.K_RIGHT:
+                change_to = 'RIGHT'
+    if -11 <= cnt <= 8:
+        if change_to == 'RIGHT' and cnt!=8:
+            startpoint[0] += 20
+            cnt +=1
+            change_to = 'UP'
+        if change_to == 'LEFT' and cnt!=-11:
+            startpoint[0] -= 20
+            cnt -=1
+            change_to = 'UP'
+    screen.blit(background, (0,0))
+    screen.blit(machine, (startpoint[0],startpoint[1]))
     
 
-    #Moves and Re-draws all Sprites
-    for entity in all_sprites:
-        entity.move()
-        DISPLAYSURF.blit(entity.image, entity.rect)
-        
-    cnt=0   
-    #To be run if collision occurs between Player and Enemy
-    if pygame.sprite.spritecollideany(P1, enemies):
-          pygame.mixer.Sound('crash.wav').play()
-          time.sleep(1)
-                   
-          DISPLAYSURF.fill(RED)
-          DISPLAYSURF.blit(game_over, (30,250))
-          
-          pygame.display.update()
-          for entity in all_sprites:
-                entity.kill() 
-          time.sleep(2)
-          pygame.quit()
-          sys.exit()     
-     
-    print(cnt)
-    pygame.display.update()
+    pygame.display.flip()
     FramePerSec.tick(FPS)

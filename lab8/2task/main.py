@@ -30,7 +30,7 @@ fruit_spawn = True
 
 
 startdir = 'RIGHT'
-change_to = startdir
+direct = startdir
 
 def Score(score, level):
     basicfont = pygame.font.SysFont(None, 30)
@@ -51,21 +51,21 @@ while not finished:
 			exit()
 		if event.type == pygame.KEYDOWN:
 			if event.key == pygame.K_UP:
-				change_to = 'UP'
+				direct = 'UP'
 			if event.key == pygame.K_DOWN:
-				change_to = 'DOWN'
+				direct = 'DOWN'
 			if event.key == pygame.K_LEFT:
-				change_to = 'LEFT'
+				direct = 'LEFT'
 			if event.key == pygame.K_RIGHT:
-				change_to = 'RIGHT'
+				direct = 'RIGHT'
 
-	if change_to == 'UP' and startdir != 'DOWN':
+	if direct == 'UP' and startdir != 'DOWN':
 		startdir = 'UP'
-	if change_to == 'DOWN' and startdir != 'UP':
+	if direct == 'DOWN' and startdir != 'UP':
 		startdir = 'DOWN'
-	if change_to == 'LEFT' and startdir != 'RIGHT':
+	if direct == 'LEFT' and startdir != 'RIGHT':
 		startdir = 'LEFT'
-	if change_to == 'RIGHT' and startdir != 'LEFT':
+	if direct == 'RIGHT' and startdir != 'LEFT':
 		startdir = 'RIGHT'
 
 	
