@@ -87,7 +87,7 @@ while not finished:
 	else:
 		snake_body.pop() #delete [last]
 	screen.fill(black)#как бы элемент удалился в коде, но не в дисплее,   
-					  #чтобы исчезли, заливаем черным
+					  #чтобы исчезли, заливаем черным)
 	if not fruit_spawn:
 		fruit_pos = [random.randrange(1, (w//10)) * 10, random.randrange(1, (h//10)) * 10]
 		

@@ -73,7 +73,7 @@ while not game_over:
     pygame.draw.circle(screen, color, (x, y), radius)
 
   pygame.display.flip()
-
+#a
   clock.tick(5)
 
 pygame.quit()

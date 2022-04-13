@@ -37,7 +37,7 @@ finished = False
 fruit_spawn = True
 while not finished:
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT:#2
             exit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
