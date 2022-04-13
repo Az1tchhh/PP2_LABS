@@ -51,6 +51,7 @@ class Enemy(pygame.sprite.Sprite):
             SCORE += 1
             self.rect.top = 0
             self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+
 class Money(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__() 
@@ -63,7 +64,6 @@ class Money(pygame.sprite.Sprite):
         global POINT
         self.rect.move_ip(0,SPEED)
         if (self.rect.top > 600):
-            
             self.rect.top = 0
             self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
  
