@@ -113,3 +113,4 @@ while not finished:
 	Score(score, lll)
 	pygame.display.update()
 	clock.tick(snake_speed)
+pygame.quit()
