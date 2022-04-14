@@ -20,7 +20,7 @@ screen = pygame.display.set_mode((w, h))
 clock = pygame.time.Clock()
 
 
-snake_position = [50, 50]
+snake_pos = [50, 50]
 
 snake_body = [[50, 50],[40, 50]]
 
@@ -70,17 +70,17 @@ while not finished:
 
 	
 	if startdir == 'UP':
-		snake_position[1] -= 10
+		snake_pos[1] -= 10
 	if startdir == 'DOWN':
-		snake_position[1] += 10
+		snake_pos[1] += 10
 	if startdir == 'LEFT':
-		snake_position[0] -= 10
+		snake_pos[0] -= 10
 	if startdir == 'RIGHT':
-		snake_position[0] += 10
+		snake_pos[0] += 10
 
 	
-	snake_body.insert(0, list(snake_position)) #add [0]
-	if snake_position[0] == fruit_pos[0] and snake_position[1] == fruit_pos[1]:
+	snake_body.insert(0, list(snake_pos)) #add [0]
+	if snake_pos[0] == fruit_pos[0] and snake_pos[1] == fruit_pos[1]:
 		score += 1
 		cnt+=1
 		fruit_spawn = False
@@ -102,9 +102,9 @@ while not finished:
 	pygame.draw.circle(screen, white, (fruit_pos[0], fruit_pos[1]), 7.5)
 
 	
-	if snake_position[0] < 0 or snake_position[0] > w-10:
+	if snake_pos[0] < 0 or snake_pos[0] > w-15:
 		exit()
-	if snake_position[1] < 0 or snake_position[1] > h-10:
+	if snake_pos[1] < 0 or snake_pos[1] > h-15:
 		exit()
 	if cnt>=3:
 		snake_speed+=3
