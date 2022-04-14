@@ -1,11 +1,7 @@
-
 import pygame
 pygame.init()
 ####
-def drawCircle( screen, x, y, r, color ):
-    pygame.draw.circle( screen, color, ( x, y ), r )
-def drawRect ( screen, x,y,a,b, color):
-    pygame.draw.rect(screen, color, (x,y,a,b))
+
 ####
 res = w,h = 700,700
 screen = pygame.display.set_mode(res)
