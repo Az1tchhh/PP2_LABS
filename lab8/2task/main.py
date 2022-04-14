@@ -3,31 +3,20 @@ import random
 pygame.init()
 
 snake_speed = 10
-
-
 res = w,h = 700,700
-
 black = (0, 0, 0)
 white = (255, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-
 pygame.display.set_caption('AZAZAZ')
 screen = pygame.display.set_mode((w, h))
-
-
 clock = pygame.time.Clock()
 
-
 snake_pos = [50, 50]
-
 snake_body = [[50, 50],[40, 50]]
-
 fruit_pos = [random.randrange(1, (w//10)) * 10, random.randrange(1, (h//10)) * 10]
-
-fruit_spawn = True
-
+fruit = True
 
 startdir = 'RIGHT'
 direct = startdir
@@ -38,14 +27,13 @@ def Score(score, level):
     score_surface2 = basicfont.render('Your Level : ' + str(level), True, white)
     screen.blit(score_surface, (0,0))
     screen.blit(score_surface2, (200,0))
-score = 0
 
+score = 0
 basicFontForText = pygame.font.SysFont(None, 30)
 cnt=0
 finished = False
 lll = 0
 while not finished:
-	
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
 			exit()
@@ -83,16 +71,14 @@ while not finished:
 	if snake_pos[0] == fruit_pos[0] and snake_pos[1] == fruit_pos[1]:
 		score += 1
 		cnt+=1
-		fruit_spawn = False
+		fruit = False
 	else:
 		snake_body.pop() #delete [last]
 	screen.fill(black)#как бы элемент удалился в коде, но не в дисплее,   
 					  #чтобы исчезли, заливаем черным)
-	if not fruit_spawn:
-		fruit_pos = [random.randrange(1, (w//10)) * 10, random.randrange(1, (h//10)) * 10]
-		
-	fruit_spawn = True
-	
+	if not fruit:
+		fruit_pos = [random.randrange(1, (w//10)) * 10, random.randrange(1, (h//10)) * 10]	
+	fruit = True
 	
 	for pos in range(len(snake_body)):
 		if pos == 0:
@@ -101,15 +87,17 @@ while not finished:
 			pygame.draw.circle(screen, GREEN, (snake_body[pos][0], snake_body[pos][1]), 7.5)
 	pygame.draw.circle(screen, white, (fruit_pos[0], fruit_pos[1]), 7.5)
 
-	
 	if snake_pos[0] < 0 or snake_pos[0] > w-15:
 		exit()
 	if snake_pos[1] < 0 or snake_pos[1] > h-15:
 		exit()
+
+	
 	if cnt>=3:
 		snake_speed+=3
 		lll+=1
 		cnt=0
+	
 	Score(score, lll)
 	pygame.display.update()
 	clock.tick(snake_speed)

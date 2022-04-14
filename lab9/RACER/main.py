@@ -1,24 +1,14 @@
-#Imports
-from tokenize import Pointfloat
 import pygame, sys
 from pygame.locals import *
 import random, time
- 
-#Initialzing 
-pygame.init()
- 
-#Setting up FPS 
-FPS = 60
-FramePerSec = pygame.time.Clock()
- 
-#Creating colors
-BLUE  = (0, 0, 255)
+pygame.init() 
+
+
+
 RED   = (255, 0, 0)
-GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
- 
-#Other Variables for use in the program
+
+
 SCREEN_WIDTH = 400
 SCREEN_HEIGHT = 600
 SPEED = 5
@@ -29,24 +19,25 @@ DOLLAR = 0
 font = pygame.font.SysFont("Verdana", 60)
 font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over", True, BLACK)
- 
+
 background = pygame.image.load("road.png")
 background = pygame.transform.rotate(background, -90)
 background = pygame.transform.scale(background, (400,600))
 
-#Create a white screen 
+clock = pygame.time.Clock()
+
 DISPLAYSURF = pygame.display.set_mode((400,600))
-DISPLAYSURF.fill(WHITE)
-pygame.display.set_caption("Game")
+
+pygame.display.set_caption("AZAZA")
 cnt = 0
 class Enemy(pygame.sprite.Sprite):
-      def __init__(self):
+    def __init__(self):
         super().__init__() 
         self.image = pygame.image.load("Enemy.png")
         self.rect = self.image.get_rect()
         self.rect.center = (random.randint(40, SCREEN_WIDTH-40), 0)  
- 
-      def move(self):
+    
+    def move(self):
         global SCORE
         
         self.rect.move_ip(0,SPEED)
@@ -91,45 +82,45 @@ class Player(pygame.sprite.Sprite):
         if self.rect.right < SCREEN_WIDTH:        
             if pressed_keys[K_RIGHT]:
                 self.rect.move_ip(5, 0)
-                   
-#Setting up Sprites        
+                          
 P1 = Player()
 E1 = Enemy()
 M1 = Money()
-#Creating Sprites Groups
+
 enemies = pygame.sprite.Group()
 enemies.add(E1)
+
 points = pygame.sprite.Group()
 points.add(M1)
+
 all_sprites = pygame.sprite.Group()
 all_sprites.add(P1)
 all_sprites.add(E1)
 all_sprites.add(M1)
-#Adding a new User event 
+
 INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
  
-#Game Loop
-while True:
-       
-    #Cycles through all events occurring  
+
+while True: 
     for event in pygame.event.get():
         if event.type == INC_SPEED:
             if cnt>=5:
                 SPEED+=1
                 cnt=0    
         if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
+            exit()
  
     DISPLAYSURF.blit(background, (0,0))
     scores = font_small.render(str(SCORE), True, BLACK)
     DISPLAYSURF.blit(scores, (10,10))
+
     point = font_small.render(str(POINT)+"$", True, BLACK)
     DISPLAYSURF.blit(point, (100,10))
+    
     speed = font_small.render(str(SPEED)+" - Speed", True, BLACK)
     DISPLAYSURF.blit(speed, (190,10))
-    #Moves and Re-draws all Sprites
+    
     for entity in all_sprites:
         DISPLAYSURF.blit(entity.image, entity.rect)
         entity.move()
@@ -162,4 +153,4 @@ while True:
         M1.rect.top = 0
         M1.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
     pygame.display.update()
-    FramePerSec.tick(FPS)
+    clock.tick(60)
