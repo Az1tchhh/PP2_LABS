@@ -33,6 +33,7 @@ basicFontForText = pygame.font.SysFont(None, 30)
 cnt=0
 finished = False
 lll = 0
+level = 0
 while not finished:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -87,9 +88,9 @@ while not finished:
 			pygame.draw.circle(screen, GREEN, (snake_body[pos][0], snake_body[pos][1]), 7.5)
 	pygame.draw.circle(screen, white, (fruit_pos[0], fruit_pos[1]), 7.5)
 
-	if snake_pos[0] < 0 or snake_pos[0] > w-15:
+	if snake_pos[0] < 0 or snake_pos[0] > w-10:
 		exit()
-	if snake_pos[1] < 0 or snake_pos[1] > h-15:
+	if snake_pos[1] < 0 or snake_pos[1] > h-10:
 		exit()
 
 	
@@ -97,7 +98,6 @@ while not finished:
 		snake_speed+=3
 		lll+=1
 		cnt=0
-	
 	Score(score, lll)
 	pygame.display.update()
 	clock.tick(snake_speed)
