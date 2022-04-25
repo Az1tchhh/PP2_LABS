@@ -10,9 +10,8 @@ conn = psycopg2.connect(
   host="localhost")
 
 
-name = input('Eneter your name...\n')
-
-sql2 = f'select name, score, scorelevel from players where name = \'{name}\''
+name = input('Enter your name...\n')
+sql2 = f'select name, score, level from players where name = \'{name}\''
 cursor2 = conn.cursor()
 cursor2.execute(sql2)
 players2 = cursor2.fetchall()
@@ -20,7 +19,7 @@ print(players2)
 if len(players2) == 0:
   	print('please register in the system')
 else:
-	print(f'Your Score:{players2[0][1]}')
+	print(f'Your Score: {players2[0][1]}, Your level: {players2[0][2]}')
 
 
 
@@ -149,15 +148,22 @@ while not finished:
 		lll+=1
 		cnt=0
 	Score(score, lll, kk)
-	#insert_sql = f"insert into players (score, scorelevel) values {score, lll};"
-	#insert_to = (players2[0][1], players2[0][2])
-	#cursor = conn.cursor()
-	#cursor.execute(insert_sql, insert_to)
 
-	#conn.commit()
-
-
-	#cursor.close()
+	
+	cursor = conn.cursor()
+	
+	cursor.execute(f'''
+	update players
+	set score = {score}
+	where name = \'{name}\';
+	''')
+	cursor.execute(f'''
+	update players
+	set level = {lll}
+	where name = \'{name}\';
+	''')
+	conn.commit()
+	cursor.close()
 
 	pygame.display.update()
 	clock.tick(snake_speed)
